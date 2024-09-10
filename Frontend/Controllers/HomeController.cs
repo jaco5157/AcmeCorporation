@@ -31,7 +31,7 @@ public class HomeController : Controller
     
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Draw([Bind("Person")] Person person, [Bind("Serial")] string serial)
+    public IActionResult Draw(Person person, string serial)
     {
         _logger.LogInformation(person.FirstName + " entered draw with serial: " + serial);
         return View();
