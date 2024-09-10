@@ -22,6 +22,18 @@ public class HomeController : Controller
     {
         return View();
     }
+    
+    public IActionResult Draw()
+    {
+        return View();
+    }
+    
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult DrawPost()
+    {
+        return Draw();
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
