@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend", "Frontend\Fronte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{7A771E55-53A0-4993-B2DD-9209295D4E69}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawService", "DrawService\DrawService.csproj", "{B4AD12C8-C68D-430F-BF73-C7A38FAD09CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{7A771E55-53A0-4993-B2DD-9209295D4E69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A771E55-53A0-4993-B2DD-9209295D4E69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A771E55-53A0-4993-B2DD-9209295D4E69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4AD12C8-C68D-430F-BF73-C7A38FAD09CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4AD12C8-C68D-430F-BF73-C7A38FAD09CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4AD12C8-C68D-430F-BF73-C7A38FAD09CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4AD12C8-C68D-430F-BF73-C7A38FAD09CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

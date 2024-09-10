@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  
+  frontend:
+    build:
+      context: ./
+      dockerfile: Frontend/Dockerfile
+    ports:
+      - 8080:80
+    networks:
+      - frontend
+      - backend
+    depends_on: service.draw
+      
+  
+  service.draw:
+    build:
+      context: ./
+      dockerfile: DrawService/Dockerfile
+    ports:
+      - 8080:80
+    networks:
+      - backend
+
+networks:
+  frontend:
+  backend:
