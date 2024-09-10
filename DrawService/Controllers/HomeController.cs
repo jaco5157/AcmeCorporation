@@ -1,10 +1,11 @@
 using System.Diagnostics;
+using ClassLibrary.Classes;
 using Microsoft.AspNetCore.Mvc;
-using DrawService.Models;
+using ClassLibrary.Interfaces;
 
 namespace DrawService.Controllers;
 
-public class HomeController : Controller
+public class HomeController : Controller, IDrawService
 {
     private readonly ILogger<HomeController> _logger;
 
@@ -13,19 +14,19 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    public IActionResult Index()
+    public bool Get()
     {
-        return View();
+        return true;
     }
 
-    public IActionResult Privacy()
+    public Draw? DrawEntry(Draw draw)
     {
-        return View();
+        throw new NotImplementedException();
     }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
+    public IEnumerable<Draw> ListEntries(string email)
     {
-        return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
+        throw new NotImplementedException();
     }
+    
 }
