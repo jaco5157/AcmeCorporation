@@ -19,12 +19,12 @@ public class HomeController : Controller, IDrawService
         return true;
     }
 
-    public Draw? DrawEntry(Draw draw)
+    public Draw? SubmitDraw(Draw draw)
     {
         throw new NotImplementedException();
     }
 
-    public IEnumerable<Draw> ListEntries(string email)
+    public IEnumerable<Draw> ListDraws(string email)
     {
         throw new NotImplementedException();
     }

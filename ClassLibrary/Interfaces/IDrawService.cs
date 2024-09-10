@@ -5,6 +5,6 @@ namespace ClassLibrary.Interfaces;
 public interface IDrawService
 {
     public bool Get();
-    public Draw? DrawEntry(Draw draw);
-    public IEnumerable<Draw> ListEntries(string email);
+    public Draw? SubmitDraw(Draw draw);
+    public IEnumerable<Draw> ListDraws(string email);
 }
