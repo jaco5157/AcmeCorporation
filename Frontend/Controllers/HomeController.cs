@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using ClassLibrary.Classes;
 using Microsoft.AspNetCore.Mvc;
 using Frontend.Models;
 
@@ -30,9 +31,10 @@ public class HomeController : Controller
     
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult DrawPost()
+    public IActionResult Draw([Bind("Person")] Person person, [Bind("Serial")] string serial)
     {
-        return Draw();
+        _logger.LogInformation(person.FirstName + " entered draw with serial: " + serial);
+        return View();
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
