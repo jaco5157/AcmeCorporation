@@ -17,4 +17,5 @@ public class Draw
     [DisplayName("Serial number")]
     public string Serial { get; set; }
     public Person Person { get; set; }
+    public bool WinningTicket { get; set; }
 }

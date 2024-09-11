@@ -21,9 +21,12 @@ public class HomeController : Controller, IDrawService
 
     public Draw? SubmitDraw(Draw draw)
     {
+        Random random = new Random();
+        draw.WinningTicket = random.Next(0, 2) == 0;
+
         _logger.LogInformation(draw.Serial + "Submitted");
+        
         return draw;
-        //throw new NotImplementedException();
     }
 
     public IEnumerable<Draw> ListDraws(string email)
