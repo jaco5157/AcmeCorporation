@@ -1,7 +1,7 @@
 using System.Diagnostics;
-using ClassLibrary.Classes;
 using Microsoft.AspNetCore.Mvc;
 using ClassLibrary.Interfaces;
+using ClassLibrary.Models;
 
 namespace DrawService.Controllers;
 
@@ -21,7 +21,9 @@ public class HomeController : Controller, IDrawService
 
     public Draw? SubmitDraw(Draw draw)
     {
-        throw new NotImplementedException();
+        _logger.LogInformation(draw.Serial + "Submitted");
+        return draw;
+        //throw new NotImplementedException();
     }
 
     public IEnumerable<Draw> ListDraws(string email)

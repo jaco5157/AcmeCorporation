@@ -7,19 +7,18 @@ services:
       context: ./
       dockerfile: Frontend/Dockerfile
     ports:
-      - 8080:80
+      - 51001:8080
     networks:
       - frontend
       - backend
-    depends_on: service.draw
+    depends_on: 
+     - service.draw
       
   
   service.draw:
     build:
       context: ./
       dockerfile: DrawService/Dockerfile
-    ports:
-      - 8080:80
     networks:
       - backend
 

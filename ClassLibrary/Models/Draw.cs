@@ -1,4 +1,6 @@
-namespace ClassLibrary.Classes;
+using System.ComponentModel;
+
+namespace ClassLibrary.Models;
 
 public class Draw
 {
@@ -12,6 +14,7 @@ public class Draw
     {
     }
 
+    [DisplayName("Serial number")]
     public string Serial { get; set; }
     public Person Person { get; set; }
 }

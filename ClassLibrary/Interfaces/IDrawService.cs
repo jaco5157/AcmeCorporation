@@ -1,4 +1,4 @@
-using ClassLibrary.Classes;
+using ClassLibrary.Models;
 
 namespace ClassLibrary.Interfaces;
 

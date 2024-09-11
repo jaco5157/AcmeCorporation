@@ -1,13 +1,13 @@
-using ClassLibrary.Classes;
 using ClassLibrary.Interfaces;
 using System.Text;
+using ClassLibrary.Models;
 using Newtonsoft.Json;
 
 namespace ClassLibrary.Brokers;
 
 public class DrawBroker : BaseBroker, IDrawService
 {
-    private const string baseUri = "http://service.draw:80/Home";
+    private const string baseUri = "http://service.draw:8080/Home";
     
     public bool Get()
     {

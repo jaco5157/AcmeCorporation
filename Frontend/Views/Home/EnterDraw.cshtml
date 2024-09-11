@@ -1,0 +1,51 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ClassLibrary.Models.Draw
+@{
+    ViewData["Title"] = "Draw";
+    ViewData["Description"] = "Win prizes! Enter a valid serial code for one of our products and win prizes!";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="text-center mb-4">
+                <h1 class="display-4">Enter the Draw</h1>
+                <p class="lead">Enter with a valid serial number from one of our products. You can enter twice with any serial number.</p>
+            </div>
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <form asp-action="EnterDraw" method="post">
+                        <div class="mb-3">
+                            <label asp-for="Person.FirstName" class="form-label"></label>
+                            <input asp-for="Person.FirstName" class="form-control" placeholder="First name" />
+                            <span asp-validation-for="Person.FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Person.LastName" class="form-label"></label>
+                            <input asp-for="Person.LastName" class="form-control" placeholder="Last name" />
+                            <span asp-validation-for="Person.LastName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Person.Email" class="form-label"></label>
+                            <input asp-for="Person.Email" type="email" class="form-control" placeholder="Email" />
+                            <span asp-validation-for="Person.Email" class="text-danger"></span>
+                        </div>
+                        <div class="mb-4">
+                            <label asp-for="Serial" class="form-label"></label>
+                            <input asp-for="Serial" class="form-control" placeholder="Serial number" />
+                            <span asp-validation-for="Serial" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-block">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
