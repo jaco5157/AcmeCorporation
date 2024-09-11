@@ -1,6 +1,4 @@
 using System.Diagnostics;
-using ClassLibrary.Interfaces;
-using ClassLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using Frontend.Models;
 
@@ -9,12 +7,10 @@ namespace Frontend.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly IDrawService _drawService;
 
-    public HomeController(ILogger<HomeController> logger, IDrawService drawService)
+    public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
-        _drawService = drawService;
     }
 
     public IActionResult Index()
@@ -24,20 +20,6 @@ public class HomeController : Controller
 
     public IActionResult Privacy()
     {
-        return View();
-    }
-    
-    public IActionResult EnterDraw()
-    {
-        return View();
-    }
-    
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public IActionResult EnterDraw(Person person, string serial)
-    {
-        _logger.LogInformation(person.FirstName + " entered draw");
-        _drawService.SubmitDraw(new Draw(serial, person));
         return View();
     }
 
