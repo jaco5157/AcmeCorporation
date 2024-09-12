@@ -30,4 +30,11 @@ public class DrawBroker : BaseBroker, IDrawService
         if (t != null) return new List<Draw>(t.Result);
         return null;
     }
+
+    public bool ValidateSerialNumber(string serial)
+    {
+        var t = Get<bool>(baseUri+"/ValidateSerialNumber/"+serial);
+        if (t != null) return t.Result;
+        return false;
+    }
 }

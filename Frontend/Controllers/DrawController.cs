@@ -4,6 +4,7 @@ using ClassLibrary.Interfaces;
 
 namespace Frontend.Controllers;
 
+[IgnoreAntiforgeryToken]
 public class DrawController : Controller
 {
     private readonly ILogger<DrawController> _logger;
@@ -21,11 +22,19 @@ public class DrawController : Controller
     }
     
     [HttpPost]
-    [ValidateAntiForgeryToken]
     public IActionResult EnterDraw(Draw draw)
     {
-        _logger.LogInformation(draw.Person.FirstName + " entered draw");
-        _drawService.SubmitDraw(draw);
-        return View();
+        if (!ModelState.IsValid)
+        {
+            return View(draw);
+        }
+        var result = _drawService.SubmitDraw(draw);
+        return View("DrawSummary",result);
+    }
+    
+    [HttpGet]
+    public IActionResult DrawSummary(Draw draw)
+    {
+        return View(draw);
     }
 }

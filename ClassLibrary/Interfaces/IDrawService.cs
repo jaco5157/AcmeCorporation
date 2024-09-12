@@ -7,4 +7,5 @@ public interface IDrawService
     public bool Get();
     public Draw? SubmitDraw(Draw draw);
     public IEnumerable<Draw> ListDraws(string email);
+    public bool ValidateSerialNumber(string serial);
 }

@@ -1,0 +1,39 @@
+@model ClassLibrary.Models.Draw
+@{
+    ViewData["Title"] = "Your draw entry";
+    ViewData["Description"] = "Draw successfully entered.";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h2 class="card-title">Draw Summary</h2>
+                    <p class="lead">Hi @Model.Person.FirstName @Model.Person.LastName! Thank you for entering the draw.</p>
+                    
+                    <div class="mb-4">
+                        <h5 class="text-muted">Serial Number: <strong>@Model.Serial</strong></h5>
+                    </div>
+
+                    @if (Model.WinningTicket)
+                    {
+                        <div class="alert alert-success">
+                            <h4>Congratulations!</h4>
+                            <p>You won the draw!</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-danger">
+                            <h4>Better luck next time!</h4>
+                            <p>Your ticket did not win this time.</p>
+                        </div>
+                    }
+
+                    <a class="btn btn-primary" asp-area="" asp-controller="Draw" asp-action="EnterDraw">Enter another draw</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
