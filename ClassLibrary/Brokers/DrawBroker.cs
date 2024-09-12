@@ -31,10 +31,10 @@ public class DrawBroker : BaseBroker, IDrawService
         return null;
     }
 
-    public bool ValidateSerialNumber(string serial)
+    public bool ValidateSerialNumber(string serialNumber)
     {
-        var encodedSerial = Uri.EscapeDataString(serial);
-        var t = Get<bool>(baseUri+"/ValidateSerialNumber/"+encodedSerial);
+        var encodedSerialNumber = Uri.EscapeDataString(serialNumber);
+        var t = Get<bool>(baseUri+"/ValidateSerialNumber/"+encodedSerialNumber);
         if (t != null) return t.Result;
         return false;
     }

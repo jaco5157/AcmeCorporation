@@ -28,9 +28,9 @@ public class DrawController : Controller
         {
             return View(draw);
         }
-        if (!_drawService.ValidateSerialNumber(draw.Serial))
+        if (!_drawService.ValidateSerialNumber(draw.Serial.SerialNumber))
         {
-            ModelState.AddModelError("Serial", "Invalid serial number.");
+            ModelState.AddModelError("Serial.SerialNumber", "Invalid serial number.");
             return View(draw);
         }
         var result = _drawService.SubmitDraw(draw);

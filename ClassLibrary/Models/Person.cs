@@ -5,11 +5,12 @@ namespace ClassLibrary.Models;
 
 public class Person
 {
-    public Person(string firstName, string lastName, string email)
+    public Person(string firstName, string lastName, string email, DateTime dateOfBirth)
     {
         FirstName = firstName;
         LastName = lastName;
         Email = email;
+        DateOfBirth = dateOfBirth;
     }
     
     public Person()
