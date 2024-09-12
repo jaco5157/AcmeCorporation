@@ -30,7 +30,7 @@ public class DrawController : Controller
         }
         if (!_drawService.ValidateSerialNumber(draw.Serial.SerialNumber))
         {
-            ModelState.AddModelError("Serial.SerialNumber", "Invalid serial number.");
+            ModelState.AddModelError("Serial.SerialNumber", "Serial number is invalid or has been used two times already.");
             return View(draw);
         }
         var result = _drawService.SubmitDraw(draw);

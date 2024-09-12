@@ -20,7 +20,7 @@ public class MySQLDataProvider : IDataProvider
         throw new NotImplementedException();
     }
 
-    public bool GetDrawCount(string serial)
+    public int GetDrawCount(string serial)
     {
         throw new NotImplementedException();
     }
