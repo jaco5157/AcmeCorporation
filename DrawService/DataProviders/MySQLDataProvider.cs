@@ -35,6 +35,8 @@ public class MySQLDataProvider : IDataProvider
     
     public Draw? SubmitDraw(Draw draw)
     {
+        var personId = GetOrCreatePerson(draw.Person);
+        
         using var con = new MySqlConnection(cs);
         if (!Open(con))
             return null;
@@ -44,12 +46,15 @@ public class MySQLDataProvider : IDataProvider
         using var cmd = new MySqlCommand(sql, con);
         
         cmd.Parameters.AddWithValue("@winningticket", draw.WinningTicket);
-        cmd.Parameters.AddWithValue("@serialnumber", draw.Serial);
-        cmd.Parameters.AddWithValue("@personid", GetOrCreatePerson(draw.Person));
+        cmd.Parameters.AddWithValue("@serialnumber", draw.Serial.SerialNumber);
+        cmd.Parameters.AddWithValue("@personid", personId);
         
         cmd.Prepare();
-
-        var result = GetDrawById(Convert.ToInt32(cmd.ExecuteScalar()));
+        cmd.ExecuteNonQuery();
+        
+        sql = "SELECT LAST_INSERT_ID()";
+        using var getIdCmd = new MySqlCommand(sql, con);
+        var result = GetDrawById(Convert.ToInt32(getIdCmd.ExecuteScalar()));
 
         return result;
     }
@@ -168,7 +173,7 @@ public class MySQLDataProvider : IDataProvider
             return 0;
         
         // Check if person exists
-        var checkSql = @"SELECT Id FROM Persons 
+        var checkSql = @"SELECT PersonId FROM Persons 
                      WHERE Firstname = @firstname 
                        AND Lastname = @lastname 
                        AND Email = @email 
@@ -196,8 +201,11 @@ public class MySQLDataProvider : IDataProvider
         cmd.Parameters.AddWithValue("@email", person.Email);
         cmd.Parameters.AddWithValue("@dateofbirth", person.DateOfBirth);
         cmd.Prepare();
+        cmd.ExecuteNonQuery();
         
-        var result = Convert.ToInt32(cmd.ExecuteScalar());
+        sql = "SELECT LAST_INSERT_ID()";
+        using var idCmd = new MySqlCommand(sql, con);
+        var result = Convert.ToInt32(idCmd.ExecuteScalar());
 
         return result;
     }

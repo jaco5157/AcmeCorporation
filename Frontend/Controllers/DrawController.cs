@@ -1,6 +1,7 @@
 using ClassLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using ClassLibrary.Interfaces;
+using Frontend.Models;
 
 namespace Frontend.Controllers;
 
@@ -34,12 +35,33 @@ public class DrawController : Controller
             return View(draw);
         }
         var result = _drawService.SubmitDraw(draw);
-        return View("DrawSummary",result);
+        return View("DrawSummary", result);
     }
     
     [HttpGet]
     public IActionResult DrawSummary(Draw draw)
     {
         return View(draw);
+    }
+
+    [HttpGet]
+    public IActionResult ListDraws(int pageNumber = 1, int pageSize = 10)
+    {
+        var draws = _drawService.ListDraws();
+        var totalDraws = draws.Count();
+        var totalPages = (int)Math.Ceiling(totalDraws / (double)pageSize);
+        
+        var drawsToDisplay = draws
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize);
+        
+        var model = new DrawListViewModel
+        {
+            Draws = drawsToDisplay,
+            CurrentPage = pageNumber,
+            TotalPages = totalPages
+        };
+
+        return View(model);
     }
 }

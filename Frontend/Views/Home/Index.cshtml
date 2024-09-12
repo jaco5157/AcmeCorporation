@@ -3,8 +3,13 @@
     ViewData["Description"] = "Welcome to Acme Corporation, the place where awesome products and dreams are created!";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Acme Corporation</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <a class="" asp-area="" asp-controller="Draw" asp-action="EnterDraw">Enter draw</a>
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="display-4">Welcome to Acme Corporation</h1>
+        <p class="lead">@ViewData["Description"]</p>
+        <div class="mt-4">
+            <a class="btn btn-primary btn-lg mx-2" asp-controller="Draw" asp-action="EnterDraw">Enter Draw</a>
+            <a class="btn btn-secondary btn-lg mx-2" asp-controller="Draw" asp-action="ListDraws">List Draws</a>
+        </div>
+    </div>
 </div>
