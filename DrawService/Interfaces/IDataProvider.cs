@@ -7,5 +7,6 @@ public interface IDataProvider
     Draw? SubmitDraw(Draw draw);
     IEnumerable<Draw> ListDraws();
     bool ContainsSerialNumber(string serial);
-    int GetDrawCount(string serial);
+    int GetUsageCount(string serial);
+    bool IncrementUsageCount(string serial);
 }

@@ -28,13 +28,13 @@ public class HomeController : Controller, IDrawService
     [HttpPost("SubmitDraw")]
     public Draw? SubmitDraw([FromBody]Draw draw)
     {
-        if (_dataProvider.ContainsSerialNumber(draw.Serial.SerialNumber) &&
-            _dataProvider.GetDrawCount(draw.Serial.SerialNumber) < 2)
-        {
-            draw.WinningTicket = _random.Next(0, 2) == 0;
-            return _dataProvider.SubmitDraw(draw);
-        }
-        return null;
+        if (!_dataProvider.ContainsSerialNumber(draw.Serial.SerialNumber) ||
+            _dataProvider.GetUsageCount(draw.Serial.SerialNumber) >= 2) return null;
+        
+        if (!_dataProvider.IncrementUsageCount(draw.Serial.SerialNumber)) return null;
+        
+        draw.WinningTicket = _random.Next(0, 2) == 0;
+        return _dataProvider.SubmitDraw(draw);
     }
 
     [HttpGet("ListDraws")]
@@ -46,7 +46,7 @@ public class HomeController : Controller, IDrawService
     [HttpGet("ValidateSerialNumber/{serial}")]
     public bool ValidateSerialNumber(string serial)
     {
-        return _dataProvider.ContainsSerialNumber(serial) && _dataProvider.GetDrawCount(serial) < 2;
+        return _dataProvider.ContainsSerialNumber(serial) && _dataProvider.GetUsageCount(serial) < 2;
     }
     
 }
