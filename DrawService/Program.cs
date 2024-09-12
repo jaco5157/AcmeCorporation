@@ -1,7 +1,12 @@
+using DrawService.DataProviders;
+using DrawService.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<IDataProvider, MySQLDataProvider>();
 
 var app = builder.Build();
 
