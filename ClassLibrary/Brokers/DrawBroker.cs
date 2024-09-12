@@ -24,9 +24,9 @@ public class DrawBroker : BaseBroker, IDrawService
         return null;
     }
 
-    public IEnumerable<Draw> ListDraws(string email)
+    public IEnumerable<Draw> ListDraws()
     {
-        var t = Get<Draw[]>(baseUri+"/ListDraws/"+email);
+        var t = Get<Draw[]>(baseUri+"/ListDraws");
         if (t != null) return new List<Draw>(t.Result);
         return null;
     }

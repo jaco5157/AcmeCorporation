@@ -6,6 +6,6 @@ public interface IDrawService
 {
     public bool Get();
     public Draw? SubmitDraw(Draw draw);
-    public IEnumerable<Draw> ListDraws(string email);
+    public IEnumerable<Draw> ListDraws();
     public bool ValidateSerialNumber(string serial);
 }

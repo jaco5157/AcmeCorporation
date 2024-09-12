@@ -37,7 +37,7 @@ public class HomeController : Controller, IDrawService
     }
 
     [HttpGet("ListDraws")]
-    public IEnumerable<Draw> ListDraws(string email)
+    public IEnumerable<Draw> ListDraws()
     {
         throw new NotImplementedException();
     }
