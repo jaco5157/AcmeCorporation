@@ -10,15 +10,21 @@ services:
       - 51001:8080
     networks:
       - frontend
-      - backend
     depends_on: 
      - service.draw
       
-  
   service.draw:
     build:
       context: ./
       dockerfile: DrawService/Dockerfile
+    networks:
+      - frontend
+      - backend
+  
+  database.draw:
+    build:
+      context: ./DrawService/Database
+    command: --default-authentication-plugin=mysql_native_password
     networks:
       - backend
 
