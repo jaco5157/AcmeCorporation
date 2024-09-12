@@ -1,27 +1,3 @@
-CREATE DATABASE db;
-USE db;
-
-CREATE TABLE Persons (
-    PersonId INT IDENTITY(1,1) PRIMARY KEY,
-    FirstName NVARCHAR(100) NOT NULL,
-    LastName NVARCHAR(100) NOT NULL,
-    Email NVARCHAR(255) UNIQUE NOT NULL,
-    DateOfBirth DATE NOT NULL
-);
-
-CREATE TABLE SerialNumbers (
-    SerialNumber VARCHAR(100) PRIMARY KEY,
-    UsageCount INT DEFAULT 0
-);
-
-CREATE TABLE Draws (
-    DrawId INT IDENTITY(1,1) PRIMARY KEY,
-    EntryDate DATETIME DEFAULT GETDATE(),
-    WinningTicket BIT DEFAULT 0,
-    FOREIGN KEY (SerialNumber) REFERENCES SerialNumbers(SerialNumber),
-    FOREIGN KEY (PersonId) REFERENCES Persons(PersonId)
-);
-
 INSERT INTO SerialNumbers (SerialNumber, UsageCount) VALUES ('AC649733', 0);
 INSERT INTO SerialNumbers (SerialNumber, UsageCount) VALUES ('AC663579', 0);
 INSERT INTO SerialNumbers (SerialNumber, UsageCount) VALUES ('AC447486', 0);
@@ -122,6 +98,3 @@ INSERT INTO SerialNumbers (SerialNumber, UsageCount) VALUES ('AC998556', 0);
 INSERT INTO SerialNumbers (SerialNumber, UsageCount) VALUES ('AC864888', 0);
 INSERT INTO SerialNumbers (SerialNumber, UsageCount) VALUES ('AC452378', 0);
 INSERT INTO SerialNumbers (SerialNumber, UsageCount) VALUES ('AC575689', 0);
-
-ALTER user 'root' IDENTIFIED WITH mysql_native_password BY '';
-flush privileges;
