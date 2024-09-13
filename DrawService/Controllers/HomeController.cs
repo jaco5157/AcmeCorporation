@@ -34,6 +34,7 @@ public class HomeController : Controller, IDrawService
         if (!_dataProvider.IncrementUsageCount(draw.Serial.SerialNumber)) return null;
         
         draw.WinningTicket = _random.Next(0, 2) == 0;
+        
         return _dataProvider.SubmitDraw(draw);
     }
 

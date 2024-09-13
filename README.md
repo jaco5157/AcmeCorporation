@@ -1,6 +1,20 @@
 # Acme Corporation
 
-This homework was done for Umbraco
+This homework was done for Umbraco. This document describes to test and run the solution using Docker.
+
+
+## Testing
+Before testing the solution, we need a database running on localhost
+```
+docker run -d \
+  --name database-throwaway \
+  -p 3306:3306 \
+  -e MYSQL_ALLOW_EMPTY_PASSWORD=yes \
+  mysql:8.0.28 \
+  --default-authentication-plugin=mysql_native_password
+```
+
+Proceed to run the tests in the ``TestService`` project.
 
 ## Running
 To run the solution with docker-compose, simply use

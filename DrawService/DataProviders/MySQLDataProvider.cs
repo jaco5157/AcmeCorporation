@@ -50,7 +50,15 @@ public class MySQLDataProvider : IDataProvider
         cmd.Parameters.AddWithValue("@personid", personId);
         
         cmd.Prepare();
-        cmd.ExecuteNonQuery();
+
+        try
+        {
+            cmd.ExecuteNonQuery();
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
         
         sql = "SELECT LAST_INSERT_ID()";
         using var getIdCmd = new MySqlCommand(sql, con);
