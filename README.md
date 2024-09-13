@@ -8,6 +8,11 @@ To run the solution with docker-compose, simply use
 docker-compose up
 ```
 
+The solution can now be accessed at:
+```
+http://localhost:51001/
+```
+
 ## Serials
 Serial numbers were generated using generated using [randomcodegenerator](https://www.randomcodegenerator.com/en/generate-serial-numbers). 
 
