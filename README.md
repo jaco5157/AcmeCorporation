@@ -30,7 +30,7 @@ http://localhost:51001/
 ## Serials
 Serial numbers were generated using generated using [randomcodegenerator](https://www.randomcodegenerator.com/en/generate-serial-numbers). 
 
-Following is the first 10 entries of ``serials.csv``.
+Following is the first 10 entries of ``serials.csv``, which is located in the root folder of this project
  - AC649733
  - AC663579
  - AC447486
